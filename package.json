@@ -19,6 +19,7 @@
 	},
 	"homepage": "https://github.com/fac20/tfb-kjmp-backend#readme",
 	"dependencies": {
+		"airtable": "^0.10.0",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
