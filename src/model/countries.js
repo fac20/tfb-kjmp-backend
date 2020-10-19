@@ -4,7 +4,7 @@ function getAllCountries() {
 	return db
 		.query("SELECT * FROM countries")
 		.then(result => result.rows)
-		.catch(error);
+		.catch(error => error);
 }
 
 module.exports = { getAllCountries };
