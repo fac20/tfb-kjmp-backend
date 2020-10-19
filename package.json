@@ -1,42 +1,42 @@
 {
-  "name": "tfb-kjmp-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "NODE_ENV=test tape 'tests/*' | tap-spec",
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fac20/tfb-kjmp-backend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fac20/tfb-kjmp-backend/issues"
-  },
-  "homepage": "https://github.com/fac20/tfb-kjmp-backend#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "pg": "^8.4.1"
-  },
-  "devDependencies": {
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.13.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.4.2",
-    "nock": "^13.0.4",
-    "nodemon": "^2.0.5",
-    "prettier": "^2.1.2",
-    "supertest": "^5.0.0",
-    "tap-spec": "^5.0.0",
-    "tape": "^5.0.1"
-  },
-  "husky": {
+	"name": "tfb-kjmp-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "NODE_ENV=test tape 'tests/*' | tap-spec",
+		"dev": "nodemon src/server.js",
+		"start": "node src/server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fac20/tfb-kjmp-backend.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/fac20/tfb-kjmp-backend/issues"
+	},
+	"homepage": "https://github.com/fac20/tfb-kjmp-backend#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"pg": "^8.4.1"
+	},
+	"devDependencies": {
+		"eslint": "^7.11.0",
+		"eslint-config-prettier": "^6.13.0",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.2",
+		"nock": "^13.0.4",
+		"nodemon": "^2.0.5",
+		"prettier": "^2.1.2",
+		"supertest": "^5.0.0",
+		"tap-spec": "^5.0.0",
+		"tape": "^5.0.1"
+	},
+	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
