@@ -21,6 +21,19 @@ test("check status code is 200", t => {
 		});
 });
 
+test("that the troll test entry is returned on admin query", t => {
+	supertest(app)
+		.get("/admin/experiences")
+		.expect(200)
+		.expect("content-type", "application/json; charset=utf-8")
+		.end((err, res) => {
+			t.equal(res.body[0].id, 2);
+			t.equal(res.body[0].details, "Troll review");
+			t.error(err);
+			t.end();
+		});
+});
+
 // test("check if JSON is returned", t => {
 // 	supertest(app)
 // 		.get("/brazil/activities")

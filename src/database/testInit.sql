@@ -17,7 +17,7 @@ CREATE TABLE things_to_do
     details TEXT,
     date_time TEXT,
     location TEXT,
-    approved BOOL
+    approved BOOLEAN DEFAULT FALSE
 
 );
 CREATE TABLE businesses
@@ -29,7 +29,7 @@ CREATE TABLE businesses
     date_time TEXT,
     location TEXT,
     ownership text[],
-    approved BOOL
+    approved BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE experiences
@@ -40,7 +40,7 @@ CREATE TABLE experiences
     details TEXT,
     tags text[],
     overall_experience TEXT,
-    approved BOOL
+    approved BOOLEAN DEFAULT FALSE
 );
 
 
@@ -248,12 +248,14 @@ CREATE TABLE experiences
         ('Zimbabwe');
 
 INSERT INTO experiences (country_id, socials, details, tags, overall_experience, approved) VALUES
-    (7, 'social stuff idk', 'Food was amazing!', '{"black", "queer"}', 'Good', TRUE  ),
-    (52, 'instagram.com/yolo', 'Troll review', '{"black", "trans"}', 'Bad', FALSE  );
+    (7, 'social stuff idk', 'Food was amazing!', '{"black", "queer"}', 'Good', TRUE),
+    (52, 'instagram.com/yolo', 'Troll review', '{"black", "trans"}', 'Bad', FALSE);
 
 
 INSERT INTO things_to_do (country_id, name, details, date_time,location, approved) VALUES
-    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE);
+    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE),
+    (77, 'Pride Festival', 'The biggest celebration of queer culture', '6 September', 'Paris', TRUE),
+    (120, 'Hateful content', 'rubbish rubbish', 'never', 'Nowhere', FALSE);
 
 
 INSERT INTO businesses (country_id, name, details, date_time, location, ownership, approved) VALUES
