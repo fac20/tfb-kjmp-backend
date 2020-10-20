@@ -10,7 +10,11 @@ test("get request to '/' displays all countries", t => {
 		.then(() => {
 			getAllCountries()
 				.then(countries => {
-					t.equal(countries[0].country_name, "Afghanistan");
+					t.equal(
+						countries[0].country_name,
+						"Afghanistan",
+						"should return Afghanistan",
+					);
 					t.end();
 				})
 				.catch(error => {

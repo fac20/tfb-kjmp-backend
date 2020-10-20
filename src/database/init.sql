@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS couqntries, things_to_do, businesses, experiences
+    DROP TABLE IF EXISTS countries, things_to_do, businesses, experiences
     CASCADE;
 
 CREATE TABLE countries
@@ -15,7 +15,8 @@ CREATE TABLE things_to_do
     name VARCHAR(255) NOT NULL,
     details TEXT,
     date_time TEXT,
-    location TEXT
+    location TEXT,
+    approved BOOL
 
 );
 CREATE TABLE businesses
@@ -25,19 +26,18 @@ CREATE TABLE businesses
     details TEXT,
     date_time TEXT,
     location TEXT,
-    ownership text
-    []
-    );
+    ownership text[],
+    approved BOOL
+);
 
-    CREATE TABLE experiences
-    (
-        country_id INTEGER REFERENCES countries(id),
-        socials TEXT,
-        details TEXT,
-        tags text
-        [],
-            overall_experience TEXT
-        );
+CREATE TABLE experiences(
+    country_id INTEGER REFERENCES countries(id),
+    socials TEXT,
+    details TEXT,
+    tags text[],
+    overall_experience TEXT,
+    approved BOOL
+);
 
         INSERT INTO countries
             (country_name)
@@ -241,4 +241,4 @@ CREATE TABLE businesses
             ('Zimbabwe');
 
 
-        COMMIT;
+COMMIT;
