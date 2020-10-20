@@ -1,6 +1,7 @@
 const test = require("tape");
 const build = require("../database/build");
 const db = require("../database/connection");
+const { getUnapprovedPostsHandler } = require("../handlers/tableHandlers");
 const { getAllCountries } = require("../model/countries");
 const {
 	getApprovedPost,
@@ -8,7 +9,7 @@ const {
 	addExperiences,
 	updateApproval,
 	deletePost,
-	getForApproval,
+	getUnapproved,
 } = require("../model/postgresModels");
 
 // test that root API route works
@@ -96,7 +97,7 @@ test("get request for country-specific approved businesses", t => {
 
 test("get request for all unapproved entries across all tables", t => {
 	build().then(() => {
-		getForApproval("experiences")
+		getUnapproved("experiences")
 			.then(entries => {
 				t.equal(
 					entries[0].details,

@@ -50,7 +50,7 @@ function addExperiences(experience) {
 	);
 }
 
-function getForApproval(table) {
+function getUnapproved(table) {
 	return db
 		.query(`SELECT * FROM ${table} WHERE approved = FALSE;`)
 		.then(result => result.rows)
@@ -65,14 +65,17 @@ function updateApproval(table, id) {
 }
 
 function deletePost(table, id) {
-	return db.query(`DELETE FROM ${table} WHERE ${table}.id = ${id};`);
+	return db
+		.query(`DELETE FROM ${table} WHERE ${table}.id = ${id};`)
+		.catch(err => err);
 }
 
 module.exports = {
 	getApprovedPost,
 	addBusiness,
 	addExperiences,
-	updateApproval,
+	getUnapproved,
 	deletePost,
-	getForApproval,
+	getUnapproved,
+	updateApproval,
 };

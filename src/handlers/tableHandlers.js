@@ -5,17 +5,8 @@ const {
 	addExperiences,
 	updateApproval,
 	deletePost,
-	getForApproval,
+	getUnapproved,
 } = require("../model/postgresModels");
-
-function getApprovalHandler(req, res, next) {
-	const table = req.params.table;
-	getForApproval(table)
-		.then(result => {
-			return res.status(200).send(result);
-		})
-		.catch(next);
-}
 
 function getCountrySpecificContent(req, res, next) {
 	const countryID = req.params.id;
@@ -50,6 +41,25 @@ function addBusinessHandler(req, res, next) {
 		.catch(next);
 }
 
+//////// ADMIN ENDPOINTS /////////
+
+function getUnapprovedPostsHandler(req, res, next) {
+	const table = req.params.table;
+	getForApproval(table)
+		.then(result => {
+			return res.status(200).send(result);
+		})
+		.catch(next);
+}
+
+function approvePostHandler(req, res, next) {
+	const id = req.params.postId;
+	const table = req.params.table;
+	updateApproval(table, id).then(() => {
+		res.status(204).send();
+	});
+}
+
 function deletePostHandler(req, res, next) {
 	const id = req.params.postId;
 	const table = req.params.table;
@@ -61,15 +71,11 @@ function deletePostHandler(req, res, next) {
 }
 
 module.exports = {
-	getApprovalHandler,
+	getUnapprovedPostsHandler,
 	getCountrySpecificContent,
 	addThingsToDoHandler,
 	addExperiencesHandler,
 	addBusinessHandler,
 	deletePostHandler,
+	approvePostHandler,
 };
-
-// function addThingToDo(req, res) {
-// 	const dataBody = req.body;
-// 	//what do we need here ? do we need to break up the body into fields that we need ?
-// }

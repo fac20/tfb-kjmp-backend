@@ -3,12 +3,13 @@ require("dotenv").config();
 const cors = require("cors");
 const { displayAllCountries } = require("./handlers/countries");
 const {
-	getApprovalHandler,
+	getUnapprovedPostsHandler,
 	getCountrySpecificContent,
 	addBusinessHandler,
 	addExperiencesHandler,
 	addThingsToDoHandler,
 	deletePostHandler,
+	approvePostHandler,
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
 
@@ -21,13 +22,15 @@ app.use(cors());
 
 app.get("/", displayAllCountries);
 
-app.get("/admin/:table", getApprovalHandler);
 app.get("/:id/:table", getCountrySpecificContent);
 
 app.post("/:id/experiences", addExperiencesHandler);
 app.post("/:id/businesses", addBusinessHandler);
 app.post("/:id/things_to_do", addThingsToDoHandler);
 
+////// ADMIN ROUTES FOR PAULA //////
+app.get("/admin/:table", getUnapprovedPostsHandler);
+app.put("/admin/:table/:postId", approvePostHandler);
 app.delete("/admin/:table/:postId", deletePostHandler);
 
 module.exports = app;

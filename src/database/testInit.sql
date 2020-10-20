@@ -253,7 +253,9 @@ INSERT INTO experiences (country_id, socials, details, tags, overall_experience,
 
 
 INSERT INTO things_to_do (country_id, name, details, date_time,location, approved) VALUES
-    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE);
+    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE),
+    (77, 'Pride Festival', 'The biggest celebration of queer culture', '6 September', 'Paris', TRUE),
+    (120, 'Hateful content', 'rubbish rubbish', 'never', 'Nowhere', FALSE);
 
 
 INSERT INTO businesses (country_id, name, details, date_time, location, ownership, approved) VALUES
