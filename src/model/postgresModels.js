@@ -15,16 +15,17 @@ function getApprovedPost(countryID, table) {
 function addPost(countryID, table) {
 	return db.query(`INSERT `);
 }
+
 function addBusiness(business) {
 	return db.query(
-		`INSERT INTO businesses (name,details,date_time,location,) VALUES ($1,$2,$3,$4) RETURNING *`,
+		`INSERT INTO businesses (name,details,date_time,location,) VALUES ($1,$2,$3,$4) RETURNING *;`,
 		[business.name, business.details, business.date_time, business.location],
 	);
 }
 
 function addThingsToDo(things_to_do) {
 	return db.query(
-		`INSERT INTO things_to_do (name,details,date_time,location) VALUES ($1,$2,$3,$4) RETURNING *`,
+		`INSERT INTO things_to_do (name,details,date_time,location) VALUES ($1,$2,$3,$4) RETURNING *;`,
 		[
 			things_to_do.name,
 			things_to_do.details,
@@ -35,7 +36,7 @@ function addThingsToDo(things_to_do) {
 }
 function addExperiences(experience) {
 	return db.query(
-		`INSERT INTO experiences (socials,details,tags,overall_experience) VALUES ($1,$2,$3,$4) RETURNING *`,
+		`INSERT INTO experiences (socials,details,tags,overall_experience) VALUES ($1,$2,$3,$4) RETURNING *;`,
 		[
 			experiences.socials,
 			experiences.details,
@@ -47,16 +48,16 @@ function addExperiences(experience) {
 
 function getForApproval(table) {
 	return db
-		.query(
-			`SELECT * FROM ${table}
-                    WHERE ${table}.approved = FALSE`,
-		)
+		.query(`SELECT * FROM ${table} WHERE approved = FALSE;`)
 		.then(result => result.rows)
 		.catch(error => error);
 }
 
 function updateApproval(table, id) {
-	return db.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id};`);
+	return db
+		.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id} RETURNING *;`)
+		.then(result => result.rows[0])
+		.catch(error => error);
 }
 
 function deletePost(table, id) {
