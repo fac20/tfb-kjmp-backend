@@ -1,8 +1,6 @@
 const db = require("../database/connection.js");
 
-
 function getPosts(countryID, table) {
-
 	return db
 		.query(
 			`SELECT * FROM countries, ${table}
@@ -14,14 +12,12 @@ function getPosts(countryID, table) {
 		.catch(error => error);
 }
 
-
 function addBusiness(business) {
 	return db.query(
 		`INSERT INTO businesses (name,details,date_time,location,) VALUES ($1,$2,$3,$4) RETURNING *`,
 		[business.name, business.details, business.date_time, business.location],
 	);
 }
-
 
 function addThingsToDo(things_to_do) {
 	return db.query(
@@ -57,7 +53,10 @@ function getForApproval(table) {
 }
 
 function updateApproval(table, id) {
-	return db.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id};`);
+	return db
+		.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id} RETURNING *;`)
+		.then(result => result.rows[0])
+		.catch(error => error);
 }
 
 function deletePost(table, id) {

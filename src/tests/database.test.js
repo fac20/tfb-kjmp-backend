@@ -117,4 +117,12 @@ test("get request for all unapproved entries across all tables", t => {
 	});
 });
 
-test("can edit approved value from FALSE to TRUE");
+test("can edit approved value from FALSE to TRUE", t => {
+	build().then(() => {
+		updateApproval("experiences", 2).then(result => {
+			console.log(result);
+			t.equal(result.approved, true, "should return true");
+			t.end();
+		});
+	});
+});
