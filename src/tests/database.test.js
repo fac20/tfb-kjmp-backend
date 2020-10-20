@@ -2,7 +2,14 @@ const test = require("tape");
 const build = require("../database/build");
 const db = require("../database/connection");
 const { getAllCountries } = require("../model/countries");
-const { getRecords } = require("../model/businessesModel");
+const {
+	getPosts,
+	addBusiness,
+	addExperiences,
+	updateApproval,
+	deletePost,
+	getForApproval,
+} = require("../model/businessesModel");
 
 // test that root API route works
 
@@ -33,7 +40,7 @@ test("get request to '/' displays all countries", t => {
 
 test("get request for country-specific approved experiences ", t => {
 	build().then(() => {
-		getRecords(7, "experiences")
+		getPosts(7, "experiences")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
@@ -51,7 +58,7 @@ test("get request for country-specific approved experiences ", t => {
 
 test("get request for country-specific approved things-to-do", t => {
 	build().then(() => {
-		getRecords(7, "things_to_do")
+		getPosts(7, "things_to_do")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
@@ -69,7 +76,7 @@ test("get request for country-specific approved things-to-do", t => {
 
 test("get request for country-specific approved businesses", t => {
 	build().then(() => {
-		getRecords(150, "businesses")
+		getPosts(150, "businesses")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
@@ -87,23 +94,27 @@ test("get request for country-specific approved businesses", t => {
 
 // Admin route for moderation
 
-// test("get request for all unapproved entries across all tables", t => {
-// 	build().then(() => {
-// 		getUnapprovedEntries("experiences")
-// 			.then(entries => {
-// 				t.equal(
-// 					entries[0].details,
-// 					"Troll review",
-// 					"Should return 'Troll review'",
-// 				);
-// 				t.equal(entries[0].approved === FALSE);
-// 				t.end();
-// 			})
-// 			.catch(error => {
-// 				t.error(error);
-// 				t.end();
-// 			});
-// 	});
-// });
+test("get request for all unapproved entries across all tables", t => {
+	build().then(() => {
+		getForApproval("experiences")
+			.then(entries => {
+				t.equal(
+					entries[0].details,
+					"Troll review",
+					"Should return 'Troll review'",
+				);
+				t.equal(
+					entries[0].approved,
+					false,
+					"Expect approved value to be false",
+				);
+				t.end();
+			})
+			.catch(error => {
+				t.error(error);
+				t.end();
+			});
+	});
+});
 
 test("can edit approved value from FALSE to TRUE");
