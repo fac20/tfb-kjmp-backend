@@ -1,6 +1,6 @@
 const db = require("../database/connection.js");
 
-function getPost(countryID, table) {
+function getRecords(countryID, table) {
 	return db
 		.query(
 			`SELECT * FROM countries, ${table}
@@ -12,9 +12,11 @@ function getPost(countryID, table) {
 		.catch(error => error);
 }
 
-function addPost(countryID, table) {
-	return db.query(`INSERT `);
-}
+// function addPost(countryID, table) {
+// 	return db.query(`INSERT `);
+// }
+
+module.exports = { getRecords };
 // add business *
 // get business
 // export
