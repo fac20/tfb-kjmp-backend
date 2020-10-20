@@ -7,8 +7,8 @@ if (process.env.NODE_ENV === "test") {
 	connectionString = process.env.TEST_DATABASE_URL;
 }
 
-const database = new pg.Pool({
+const db = new pg.Pool({
 	connectionString,
 });
 
-module.exports = database;
+module.exports = db;

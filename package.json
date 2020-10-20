@@ -19,14 +19,6 @@
 	},
 	"homepage": "https://github.com/fac20/tfb-kjmp-backend#readme",
 	"dependencies": {
-		"airtable": "^0.10.0",
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"pg": "^8.4.1"
-	},
-	"devDependencies": {
-		"eslint": "^7.11.0",
 		"eslint-config-prettier": "^6.13.0",
 		"husky": "^4.3.0",
 		"lint-staged": "^10.4.2",

@@ -1,11 +1,21 @@
-const airtableDB = require("../database/airtableConnection.js");
+const laws = require("../database/airtableConnection.js");
 
-function getInfoByCountry(country) {
-	return airtableDB.query("SELECT * FROM ");
-}
+const getCountry = countryName => {
+	const airtableDB = laws.select({
+		view: "All",
+		filterByFormula: `{Country} = ${countryName}`,
+	});
 
-airtableDB.firstPage((error, records) => {
-	const countries = records.map(record => record.get("Country"));
+	airtableDB.firstPage(function (err, records) {
+		if (err) {
+			console.error(err);
+			return;
+		}
+		records.forEach(function (record) {
+			console.log(record._rawJson.fields);
+			return record._rawJson.fields;
+		});
+	});
+};
 
-	console.log(countries);
-});
+getCountry("country");
