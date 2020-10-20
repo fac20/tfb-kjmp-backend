@@ -1,6 +1,6 @@
 const db = require("../database/connection.js");
 
-function getAprrovedPost(countryID, table) {
+function getPosts(countryID, table) {
 	return db
 		.query(
 			`SELECT * FROM countries, ${table}
@@ -12,9 +12,6 @@ function getAprrovedPost(countryID, table) {
 		.catch(error => error);
 }
 
-function addPost(countryID, table) {
-	return db.query(`INSERT `);
-}
 function addBusiness(business) {
 	return db.query(
 		`INSERT INTO businesses (name,details,date_time,location,) VALUES ($1,$2,$3,$4) RETURNING *`,
@@ -56,15 +53,17 @@ function getForApproval(table) {
 }
 
 function updateApproval(table, id) {
-	return db.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id};`);
+	return db
+		.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id} RETURNING *;`)
+		.then(result => result.rows[0])
+		.catch(error => error);
 }
 
 function deletePost(table, id) {
 	return db.query(`DELETE FROM ${table} WHERE ${table}.id = ${id};`);
 }
 module.exports = {
-	getApprovedPost,
-	addPost,
+	getPosts,
 	addBusiness,
 	addExperiences,
 	updateApproval,

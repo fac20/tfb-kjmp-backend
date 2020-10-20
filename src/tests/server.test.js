@@ -12,9 +12,10 @@ test("check status code is 200", t => {
 	supertest(app)
 		.get("/")
 		.expect(200)
-		.expect("content-type", "text/html; charset=utf-8")
+		.expect("content-type", "application/json; charset=utf-8")
 		.end((err, res) => {
-			t.equal(res.text, "<h1>landing page</h1>");
+			t.equal(res.body[0].id, 1);
+			t.equal(res.body[0].country_name, "Afghanistan");
 			t.error(err);
 			t.end();
 		});
