@@ -41,18 +41,6 @@ CREATE TABLE experiences(
 
 
 
-INSERT INTO experiences (country_id, socials, details, tags, overall_experience, approved) VALUES
-    (7, 'social stuff idk', 'Food was Amazing!', {'black', 'queer'}, 'Good', TRUE  )
-    (52, 'instagram.com/yolo', 'Troll review', {'black', 'trans'}, 'Bad', FALSE  )
-
-
-INSERT INTO things_to_do (country_id, name, details, date_time,location, approved) VALUES
-    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE);
-
-
-INSERT INTO businesses (country_id, name, details, date_time, location, ownership, approved) VALUES
-    (150, 'Tarek''s Tacos', 'Fantastic service at a great price.', '15 October 2020', 'Downtown', {'black'}, TRUE)
-
     INSERT INTO countries
         (country_name)
 
@@ -254,6 +242,18 @@ INSERT INTO businesses (country_id, name, details, date_time, location, ownershi
         ('Yemen'),
         ('Zambia'),
         ('Zimbabwe');
+
+INSERT INTO experiences (country_id, socials, details, tags, overall_experience, approved) VALUES
+    (7, 'social stuff idk', 'Food was amazing!', '{"black", "queer"}', 'Good', TRUE  ),
+    (52, 'instagram.com/yolo', 'Troll review', '{"black", "trans"}', 'Bad', FALSE  );
+
+
+INSERT INTO things_to_do (country_id, name, details, date_time,location, approved) VALUES
+    (7, 'Bobby', 'Great view!','date and time string from new Date()', 'Buenos Aires', TRUE);
+
+
+INSERT INTO businesses (country_id, name, details, date_time, location, ownership, approved) VALUES
+    (150, 'Tarek''s Tacos', 'Fantastic service at a great price.', '15 October 2020', 'Downtown', '{"black"}', TRUE);
 
 
 
