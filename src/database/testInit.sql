@@ -10,7 +10,8 @@ CREATE TABLE countries
 );
 
 CREATE TABLE things_to_do
-(
+(   
+    id SERIAL PRIMARY KEY,
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
@@ -20,7 +21,8 @@ CREATE TABLE things_to_do
 
 );
 CREATE TABLE businesses
-(
+(   
+    id SERIAL PRIMARY KEY, 
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
@@ -30,7 +32,9 @@ CREATE TABLE businesses
     approved BOOL
 );
 
-CREATE TABLE experiences(
+CREATE TABLE experiences
+(   
+    id SERIAL PRIMARY KEY,
     country_id INTEGER REFERENCES countries(id),
     socials TEXT,
     details TEXT,
