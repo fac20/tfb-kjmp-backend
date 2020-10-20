@@ -85,9 +85,11 @@ test("get request for country-specific approved businesses", t => {
 	});
 });
 
+// Admin route for moderation
+
 // test("get request for all unapproved entries across all tables", t => {
 // 	build().then(() => {
-// 		getUnapprovedEntries()
+// 		getUnapprovedEntries("experiences")
 // 			.then(entries => {
 // 				t.equal(
 // 					entries[0].details,
@@ -103,3 +105,5 @@ test("get request for country-specific approved businesses", t => {
 // 			});
 // 	});
 // });
+
+test("can edit approved value from FALSE to TRUE");
