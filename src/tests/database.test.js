@@ -32,7 +32,7 @@ test("get request to '/' displays all countries", t => {
 
 test("get request for country-specific approved experiences ", t => {
 	build().then(() => {
-		getPosts(5, "experiences")
+		getPosts(7, "experiences")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
@@ -50,7 +50,7 @@ test("get request for country-specific approved experiences ", t => {
 
 test("get request for country-specific approved things-to-do", t => {
 	build().then(() => {
-		getPosts(5, "things_to_do")
+		getPosts(7, "things_to_do")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
@@ -68,7 +68,7 @@ test("get request for country-specific approved things-to-do", t => {
 
 test("get request for country-specific approved businesses", t => {
 	build().then(() => {
-		getPosts(5, "businesses")
+		getPosts(150, "businesses")
 			.then(entries => {
 				t.equal(
 					entries[0].details,
