@@ -28,8 +28,11 @@ jobs:
       - run:
           name: run tests and generate coverage
           command: npm run cov
+      - run:
+          name: compile report
+          command: npm run report-test    
       - codecov/upload:
-        file: "./coverage/clover.xml"
+        file: "./coverage.lcov"
         # token: 064e11d9-e351-4e4f-899d-f13af28649fb
 
 workflows:

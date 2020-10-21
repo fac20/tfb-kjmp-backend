@@ -4,10 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "NODE_ENV=test tape 'src/tests/*' | tap-spec",
+		"test": "NODE_ENV=test nyc tape 'src/tests/*' | tap-spec",
 		"dev": "nodemon src/server.js",
 		"start": "nodemon src/server.js",
-		"cov": "npm test -- --coverage --watchAll=false"
+		"cov": "npm test -- --coverage --watchAll=false && codecov",
+		"report-test": "nyc report --reporter=text-lcov > coverage.lcov"
 	},
 	"repository": {
 		"type": "git",
