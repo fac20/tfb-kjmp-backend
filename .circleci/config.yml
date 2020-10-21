@@ -1,5 +1,6 @@
 version: 2.1
 orbs: 
+  node: circleci/node@3.0.0
   codecov: codecov/codecov@1.0.2
 jobs:
   # Download, install and cache dependencies
@@ -33,7 +34,7 @@ jobs:
           command: npm run report-test    
       - codecov/upload:
           file: "./coverage.lcov"
-        # token: 064e11d9-e351-4e4f-899d-f13af28649fb
+          token: 064e11d9-e351-4e4f-899d-f13af28649fb
 
 workflows:
   push:
