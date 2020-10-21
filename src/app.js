@@ -1,7 +1,6 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const { displayAllCountries } = require("./handlers/countries");
 const {
 	getUnapprovedPostsHandler,
 	getCountrySpecificContent,
@@ -10,6 +9,8 @@ const {
 	addThingsToDoHandler,
 	deletePostHandler,
 	approvePostHandler,
+	getCountrySpecificLawsHandler,
+	displayAllCountries
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
 
@@ -22,6 +23,8 @@ app.use(cors());
 
 ////// NON-ADMIN ROUTES //////
 app.get("/countries", displayAllCountries);
+app.get("/countries/:id/laws", getCountrySpecificLawsHandler);
+
 app.get("/countries/:id/:table", getCountrySpecificContent);
 
 app.post("/countries/:id/experiences", addExperiencesHandler);
@@ -32,5 +35,6 @@ app.post("/countries/:id/things_to_do", addThingsToDoHandler);
 app.put("/admin/:table/:postId", approvePostHandler);
 app.delete("/admin/:table/:postId", deletePostHandler);
 app.get("/admin/:table", getUnapprovedPostsHandler);
+
 
 module.exports = app;

@@ -42,5 +42,8 @@
 		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
 			"prettier --write"
 		]
+	},
+	"devDependencies": {
+		"airtable": "^0.10.0"
 	}
 }

@@ -70,6 +70,15 @@ function deletePost(table, id) {
 		.catch(err => err);
 }
 
+function getAllCountries() {
+	return db
+		.query("SELECT * FROM countries")
+		.then(result => {
+			return result.rows;
+		})
+		.catch(error => error);
+}
+
 module.exports = {
 	getApprovedPost,
 	addBusiness,
@@ -79,4 +88,5 @@ module.exports = {
 	getUnapproved,
 	updateApproval,
 	addThingsToDo,
+	getAllCountries
 };
