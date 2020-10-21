@@ -18,18 +18,15 @@ const lawsDB = require("../database/airtableConnection.js");
 // 	});
 // };
 
-const getCountryLaws = countryName => {
-
-	return lawsDB.select({
-		maxRecords: 1,
-		view: "All",
-		// filterByFormula: `{Country} = ${countryName}`,
-		filterByFormula: `{Country} = "${countryName}"`
-
-	})
-	.firstPage()
-	.then( records => records[0].fields)
+const getCountryLaws = countryID => {
+	return lawsDB
+		.select({
+			maxRecords: 1,
+			view: "All",
+			filterByFormula: `{Id} = "${countryID}"`,
+		})
+		.firstPage()
+		.then(records => records[0].fields);
 };
 
-module.exports = {getCountryLaws}
-// getCountryLaws('Brazil');
+module.exports = { getCountryLaws };

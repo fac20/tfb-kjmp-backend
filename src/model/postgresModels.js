@@ -88,5 +88,5 @@ module.exports = {
 	getUnapproved,
 	updateApproval,
 	addThingsToDo,
-	getAllCountries
+	getAllCountries,
 };

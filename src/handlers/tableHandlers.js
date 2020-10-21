@@ -9,7 +9,7 @@ const {
 	getUnapproved,
 } = require("../model/postgresModels");
 
-const getCountrySpecificLaws = require("../model/airtableModel")
+const { getCountryLaws } = require("../model/airtableModel");
 
 function displayAllCountries(req, res, next) {
 	getAllCountries()
@@ -29,9 +29,9 @@ function getCountrySpecificContent(req, res, next) {
 		.catch(next);
 }
 
-function getCountrySpecificLawsHandler(req, res, next) {
+function getCountryLawsHandler(req, res, next) {
 	const countryID = req.params.id;
-	getCountrySpecificLaws(countryID)
+	getCountryLaws(countryID)
 		.then(results => {
 			return res.status(200).send(results);
 		})
@@ -101,6 +101,6 @@ module.exports = {
 	addBusinessHandler,
 	deletePostHandler,
 	approvePostHandler,
-	getCountrySpecificLawsHandler,
-	displayAllCountries
+	getCountryLawsHandler,
+	displayAllCountries,
 };
