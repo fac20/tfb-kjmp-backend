@@ -78,4 +78,5 @@ module.exports = {
 	deletePost,
 	getUnapproved,
 	updateApproval,
+	addThingsToDo,
 };

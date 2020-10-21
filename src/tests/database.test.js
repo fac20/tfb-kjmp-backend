@@ -127,3 +127,9 @@ test("get request for all unapproved entries across all tables", t => {
 // 		});
 // 	});
 // });
+
+test("reset database", t => {
+	build().then(() => {
+		t.end();
+	});
+});
