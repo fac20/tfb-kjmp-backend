@@ -1,4 +1,5 @@
 const {
+	getAllCountries,
 	getApprovedPost,
 	addThingsToDo,
 	addBusiness,
@@ -7,6 +8,14 @@ const {
 	deletePost,
 	getUnapproved,
 } = require("../model/postgresModels");
+
+function displayAllCountries(req, res) {
+	getAllCountries()
+		.then(results => {
+			return res.status(200).send(results);
+		})
+		.catch(next);
+}
 
 function getCountrySpecificContent(req, res, next) {
 	const countryID = req.params.id;
@@ -45,7 +54,7 @@ function addBusinessHandler(req, res, next) {
 
 function getUnapprovedPostsHandler(req, res, next) {
 	const table = req.params.table;
-	getForApproval(table)
+	getUnapproved(table)
 		.then(result => {
 			return res.status(200).send(result);
 		})
@@ -55,9 +64,11 @@ function getUnapprovedPostsHandler(req, res, next) {
 function approvePostHandler(req, res, next) {
 	const id = req.params.postId;
 	const table = req.params.table;
-	updateApproval(table, id).then(() => {
-		res.status(204).send();
-	});
+	updateApproval(table, id)
+		.then(() => {
+			return res.status(204).send();
+		})
+		.catch(next);
 }
 
 function deletePostHandler(req, res, next) {
@@ -65,12 +76,13 @@ function deletePostHandler(req, res, next) {
 	const table = req.params.table;
 	deletePost(table, id)
 		.then(() => {
-			res.status(204).send();
+			return res.status(204).send();
 		})
 		.catch(next);
 }
 
 module.exports = {
+	displayAllCountries,
 	getUnapprovedPostsHandler,
 	getCountrySpecificContent,
 	addThingsToDoHandler,

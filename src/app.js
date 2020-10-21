@@ -20,17 +20,17 @@ app.use(express.json());
 
 app.use(cors());
 
-app.get("/", displayAllCountries);
+////// NON-ADMIN ROUTES //////
+app.get("/countries", displayAllCountries);
+app.get("/countries/:id/:table", getCountrySpecificContent);
 
-app.get("/:id/:table", getCountrySpecificContent);
-
-app.post("/:id/experiences", addExperiencesHandler);
-app.post("/:id/businesses", addBusinessHandler);
-app.post("/:id/things_to_do", addThingsToDoHandler);
+app.post("/countries/:id/experiences", addExperiencesHandler);
+app.post("/countries/:id/businesses", addBusinessHandler);
+app.post("/countries/:id/things_to_do", addThingsToDoHandler);
 
 ////// ADMIN ROUTES FOR PAULA //////
-app.get("/admin/:table", getUnapprovedPostsHandler);
 app.put("/admin/:table/:postId", approvePostHandler);
 app.delete("/admin/:table/:postId", deletePostHandler);
+app.get("/admin/:table", getUnapprovedPostsHandler);
 
 module.exports = app;

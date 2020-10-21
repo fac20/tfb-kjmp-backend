@@ -10,7 +10,7 @@ test("default test", t => {
 
 test("check status code is 200", t => {
 	supertest(app)
-		.get("/")
+		.get("/countries")
 		.expect(200)
 		.expect("content-type", "application/json; charset=utf-8")
 		.end((err, res) => {
