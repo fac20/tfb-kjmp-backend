@@ -2,7 +2,6 @@ const test = require("tape");
 const build = require("../database/build");
 const db = require("../database/connection");
 const { getUnapprovedPostsHandler } = require("../handlers/tableHandlers");
-const { getAllCountries } = require("../model/countries");
 const {
 	getApprovedPost,
 	addBusiness,
@@ -10,11 +9,12 @@ const {
 	updateApproval,
 	deletePost,
 	getUnapproved,
+	getAllCountries,
 } = require("../model/postgresModels");
 
 // test that root API route works
 
-test("get request to '/' displays all countries", t => {
+test("get request to '/countries' displays all countries", t => {
 	build()
 		.then(() => {
 			getAllCountries()

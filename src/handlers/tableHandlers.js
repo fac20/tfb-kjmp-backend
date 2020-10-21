@@ -9,7 +9,7 @@ const {
 	getUnapproved,
 } = require("../model/postgresModels");
 
-function displayAllCountries(req, res) {
+function displayAllCountries(req, res, next) {
 	getAllCountries()
 		.then(results => {
 			return res.status(200).send(results);

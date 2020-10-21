@@ -1,5 +1,14 @@
 const db = require("../database/connection.js");
 
+function getAllCountries() {
+	return db
+		.query("SELECT * FROM countries")
+		.then(result => {
+			return result.rows;
+		})
+		.catch(error => error);
+}
+
 function getApprovedPost(countryID, table) {
 	return db
 		.query(
@@ -71,12 +80,12 @@ function deletePost(table, id) {
 }
 
 module.exports = {
+	getAllCountries,
 	getApprovedPost,
 	addBusiness,
 	addExperiences,
 	getUnapproved,
 	deletePost,
-	getUnapproved,
 	updateApproval,
 	addThingsToDo,
 };

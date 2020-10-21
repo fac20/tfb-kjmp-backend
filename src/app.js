@@ -1,7 +1,6 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const { displayAllCountries } = require("./handlers/countries");
 const {
 	getUnapprovedPostsHandler,
 	getCountrySpecificContent,
@@ -10,6 +9,7 @@ const {
 	addThingsToDoHandler,
 	deletePostHandler,
 	approvePostHandler,
+	displayAllCountries,
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
 
