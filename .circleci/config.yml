@@ -1,4 +1,4 @@
-version: 2.1
+      version: 2.1
 orbs: 
   codecov: codecov/codecov@1.0.2
 jobs:
@@ -32,7 +32,7 @@ jobs:
           name: compile report
           command: npm run report-test    
       - codecov/upload:
-        file: "./coverage.lcov"
+          file: "./coverage.lcov"
         # token: 064e11d9-e351-4e4f-899d-f13af28649fb
 
 workflows:
