@@ -38,9 +38,14 @@ CREATE TABLE experiences
     socials TEXT,
     details TEXT,
     tags text[],
+<<<<<<< HEAD
     overall_experience TEXT,
     approved BOOL,
     created_at timestamp NOT NULL DEFAULT NOW()
+=======
+    overall_experience INTEGER,
+    approved BOOL
+>>>>>>> master
 );
 
         INSERT INTO countries
