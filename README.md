@@ -164,7 +164,7 @@ From our initial user research, we learnt that we needed to make our navigation 
 
 
 
-// ### 🔨 Week 3: Second Build Sprint
+/* // ### 🔨 Week 3: Second Build Sprint
 
 
 
@@ -172,4 +172,4 @@ From our initial user research, we learnt that we needed to make our navigation 
 //### 👨‍🏫 Key takeaways
 
 
-//### ⏳ Additional Features
+//### ⏳ Additional Features */
