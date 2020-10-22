@@ -47,9 +47,6 @@ jobs:
           name:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: run tests
-          command: npm run test
-      - run:
           name: run tests and generate coverage
           command: npm run cov
       - run:
