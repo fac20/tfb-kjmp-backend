@@ -11,18 +11,18 @@ CREATE TABLE countries
 
 CREATE TABLE things_to_do
 
-(   id SERIAL INTEGER,
+(   id SERIAL PRIMARY KEY,
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
     date_time TEXT,
     location TEXT,
     approved BOOL,
-    created_at NOT NULL DEFAULT NOW()
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE businesses
-(   id SERIAL INTEGER, 
+(   id SERIAL PRIMARY KEY,
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
@@ -33,19 +33,14 @@ CREATE TABLE businesses
 );
 
 CREATE TABLE experiences
-(   id SERIAL INTEGER,
+(   id SERIAL PRIMARY KEY,
     country_id INTEGER REFERENCES countries(id),
     socials TEXT,
     details TEXT,
     tags text[],
-<<<<<<< HEAD
     overall_experience TEXT,
     approved BOOL,
     created_at timestamp NOT NULL DEFAULT NOW()
-=======
-    overall_experience INTEGER,
-    approved BOOL
->>>>>>> master
 );
 
         INSERT INTO countries
