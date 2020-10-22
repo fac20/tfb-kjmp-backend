@@ -44,6 +44,7 @@
 		]
 	},
 	"devDependencies": {
-		"airtable": "^0.10.0"
+		"airtable": "^0.10.0",
+		"cookie-parser": "^1.4.5"
 	}
 }

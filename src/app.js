@@ -11,8 +11,11 @@ const {
 	approvePostHandler,
 	getCountryLawsHandler,
 	displayAllCountries,
+	setCookie,
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
+const { checkBasicAuth } = require("./middleware/auth");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 app.use(handleErrors);
@@ -20,6 +23,7 @@ app.use(handleErrors);
 app.use(express.json());
 
 app.use(cors());
+app.use(cookieParser());
 
 ////// NON-ADMIN ROUTES //////
 app.get("/countries", displayAllCountries);
@@ -32,8 +36,9 @@ app.post("/countries/:id/businesses", addBusinessHandler);
 app.post("/countries/:id/things_to_do", addThingsToDoHandler);
 
 ////// ADMIN ROUTES FOR PAULA //////
-app.put("/admin/:table/:postId", approvePostHandler);
-app.delete("/admin/:table/:postId", deletePostHandler);
-app.get("/admin/:table", getUnapprovedPostsHandler);
+app.post("/admin", setCookie);
+app.put("/admin/:table/:postId", checkBasicAuth, approvePostHandler);
+app.delete("/admin/:table/:postId", checkBasicAuth, deletePostHandler);
+app.get("/admin/:table", checkBasicAuth, getUnapprovedPostsHandler);
 
 module.exports = app;
