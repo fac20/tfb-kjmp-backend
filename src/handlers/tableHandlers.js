@@ -92,6 +92,16 @@ function deletePostHandler(req, res, next) {
 		.catch(next);
 }
 
+function setCookie(req, res, next) {
+	const { username, password } = req.body;
+	if (username === "admin" && password === "password") {
+		res
+			.cookie("username", req.body.username)
+			.cookie("password", req.body.password);
+		res.status(200).send("loggedin");
+	} else res.send("wrong credentials");
+}
+
 module.exports = {
 	displayAllCountries,
 	getUnapprovedPostsHandler,
@@ -103,4 +113,5 @@ module.exports = {
 	approvePostHandler,
 	getCountryLawsHandler,
 	displayAllCountries,
+	setCookie,
 };
