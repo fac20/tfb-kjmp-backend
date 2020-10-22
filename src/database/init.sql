@@ -37,7 +37,7 @@ CREATE TABLE experiences
     socials TEXT,
     details TEXT,
     tags text[],
-    overall_experience TEXT,
+    overall_experience INTEGER,
     approved BOOL
 );
 

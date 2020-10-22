@@ -3,10 +3,11 @@ const db = require("../database/connection.js");
 function getApprovedPost(countryID, table) {
 	return db
 		.query(
-			`SELECT * FROM countries, ${table}
-        WHERE ${table}.country_id = ${countryID}
-        AND countries.id = ${countryID}
-        AND ${table}.approved = TRUE`,
+			`SELECT * FROM countries, ($1)
+        WHERE ($2).country_id = ($3)
+        AND countries.id = ($4)
+        AND ($5).approved = TRUE`,
+			[table, table, countryID, countryID, table],
 		)
 		.then(result => result.rows)
 		.catch(error => error);
@@ -52,27 +53,30 @@ function addExperiences(experience) {
 
 function getUnapproved(table) {
 	return db
-		.query(`SELECT * FROM ${table} WHERE approved = FALSE;`)
+		.query(`SELECT * FROM ($1) WHERE approved = FALSE;`, [table])
 		.then(result => result.rows)
 		.catch(error => error);
 }
 
 function updateApproval(table, id) {
 	return db
-		.query(`UPDATE ${table} SET approved = TRUE WHERE id = ${id} RETURNING *;`)
+		.query(`UPDATE ($1) SET approved = TRUE WHERE id = ($2) RETURNING *;`, [
+			table,
+			id,
+		])
 		.then(result => result.rows[0])
 		.catch(error => error);
 }
 
 function deletePost(table, id) {
 	return db
-		.query(`DELETE FROM ${table} WHERE ${table}.id = ${id};`)
+		.query(`DELETE FROM ($1) WHERE ($2).id =($3);`, [table, table, id])
 		.catch(err => err);
 }
 
 function getAllCountries() {
 	return db
-		.query("SELECT * FROM countries")
+		.query("SELECT * FROM ($1)", [countries])
 		.then(result => {
 			return result.rows;
 		})
