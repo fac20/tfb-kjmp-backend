@@ -86,7 +86,7 @@ CREATE USER myuser WITH PASSWORD 'mypassword';
 ## REST API Endpoints
 
 
-- `:table` retrieves entries from the experiences, Thing to Do or Businesses tables in the database 
+- `:table` retrieves entries from the Experiences, Thing to Do or Businesses tables in the database 
 - `:id` retrieves a country from the world (1-197) 
 
 ### PUBLIC GET ROUTES 
