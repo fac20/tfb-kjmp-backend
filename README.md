@@ -47,9 +47,9 @@ Allows users to input user data from a postgres database using an RESTful API bu
 - Husky - Prevents poor code from being committed automatically
 
 
-## 🗄️ Database schema
+<!---## 🗄️ Database schema
 
-![database-schema]()
+<!---![]() -- > 
 
 ## Features
 
@@ -162,14 +162,18 @@ From our initial user research, we learnt that we needed to make our navigation 
 - Had a Project Owner review and implemented some changes 
 - Finished off Codecov 
 
+Velocity for this week can be viewed [here on Notion]([https://www.notion.so/3bd0bf72c4794df4b38cf0b278b7fe9f?v=62553abf3d594eca8a13bfcca8f5a804])
 
 
-/* // ### 🔨 Week 3: Second Build Sprint
 
 
 
-//## Reflections and what next
-//### 👨‍🏫 Key takeaways
+<!-- /* // ### 🔨 Week 3: Second Build Sprint
 
 
-//### ⏳ Additional Features */
+
+<!--//## Reflections and what next
+<!--//### 👨‍🏫 Key takeaways
+
+
+<!--//### ⏳ Additional Features */
