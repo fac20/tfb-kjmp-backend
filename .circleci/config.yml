@@ -1,11 +1,59 @@
 version: 2.1
+orbs: 
+  node: circleci/node@3.0.0
+  codecov: codecov/codecov@1.0.2
 jobs:
-  build:
-    docker: 
-      - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+  # Download, install and cache dependencies
+  Tests:
+
+# primary container
+
+    docker:
+      - image: circleci/node:14.5.0
+
+        
+
+# service container 
+
+      - image: circleci/postgres:9.6.5-alpine-ram
+        environment:
+          PGHOST: 127.0.0.1
+          POSTGRES_USER: postgres
+          POSTGRS_PASSWORD: postgres
+          POSTGRES_DB: testDB
+    environment:
+          TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testDB
+
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - persist_to_workspace:
+          paths:
+            - project
+          root: ~/
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/project/node_modules
+      - run:
+          name: run tests
+          command: npm run test
+      - run:
+          name: run tests and generate coverage
+          command: npm run cov
+      - run:
+          name: compile report
+          command: npm run report-test    
+      - codecov/upload:
+          file: "./coverage.lcov"
+          token: 064e11d9-e351-4e4f-899d-f13af28649fb
+
+workflows:
+  push:
+    jobs:
+      - Tests
