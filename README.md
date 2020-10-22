@@ -161,7 +161,7 @@ From our initial user research, we learnt that we needed to make our navigation 
 - Had a Project Owner review and implemented some changes 
 - Finished off Codecov 
 
-Velocity for this week can be viewed [here on Notion]([https://www.notion.so/3bd0bf72c4794df4b38cf0b278b7fe9f?v=62553abf3d594eca8a13bfcca8f5a804])
+Velocity for this week can be viewed (here on Notion)[https://www.notion.so/3bd0bf72c4794df4b38cf0b278b7fe9f?v=62553abf3d594eca8a13bfcca8f5a804]
 
 
 
