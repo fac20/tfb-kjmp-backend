@@ -4,17 +4,10 @@ function getApprovedPost(countryID, table) {
 	return db
 		.query(
 			`SELECT * FROM countries, ($1)
-        WHERE ($2) = ($3)
-        AND ($4) = ($5)
-        AND ($6)= TRUE`,
-			[
-				table,
-				table.country_id,
-				countryID,
-				countries.id,
-				countryID,
-				table.approved,
-			],
+        WHERE ($1).country_id = ($2)
+        AND countries.id = ($2)
+        AND ($1).approved = TRUE`,
+			[table, countryID],
 		)
 		.then(result => result.rows)
 		.catch(error => error);
@@ -77,7 +70,7 @@ function updateApproval(table, id) {
 
 function deletePost(table, id) {
 	return db
-		.query(`DELETE FROM ($1) WHERE ($2).id =($3);`, [table, table, id])
+		.query(`DELETE FROM ($1) WHERE ($1).id =($2);`, [table, id])
 		.catch(err => err);
 }
 
