@@ -3,8 +3,9 @@ const db = require("../database/connection.js");
 function getApprovedPost(countryID, table) {
 	return db
 		.query(
-			`SELECT * FROM countries, ${table}
-        WHERE ${table}.country_id = ${countryID}
+			`SELECT * FROM ${table}
+		INNER JOIN countries
+		ON ${table}.country_id = ${countryID}
         AND countries.id = ${countryID}
         AND ${table}.approved = TRUE`,
 		)
