@@ -15,18 +15,17 @@ Allows users to input user data from a postgres database using an RESTful API bu
 - [Trish](https://github.com/trishtracking) - Scrum facilitator / Developer 🦺
 
 ## Contents
-- [Project overview](#Project-overview)
-- [🕶The team](#🕶-The-team)
+
 - [Tech Stack](#Tech-Stack)
 - [🗄️ Database schema](#🗄️-Database-schema)
 - [🧞‍Features](#🧞‍-Features)
-- [🏁 Getting started](#🏁-Getting-started)
+- [Install](#Install)
 	- [Database setup](#Database-setup)
 	- [REST API Endpoints](#REST-API-Endpoints)
-- [📆 Project Timeline](#📆-Project-Timeline)
-- [Reflections and What Next](#Reflections-and-what-next)
+- [🕐Project Timeline](#🕐-Project-Timeline)
+<!-- - [Reflections and What Next](#Reflections-and-what-next)
 - [Key takeaways](#Key-takeaways)
-- [⏳ Additional Features](#Additional-Features)
+- [ Additional Features](#Additional-Features) --> 
 
 ## Tech Stack
 
@@ -58,7 +57,7 @@ Allows users to input user data from a postgres database using an RESTful API bu
 - An admin can view unapproved posts and approve them for viewing by users 
 
 
-## 🏁 Getting started
+## Install
 1. Clone this repo locally
 2. Run `npm run i` to install dependencies 
 
