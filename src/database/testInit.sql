@@ -17,19 +17,20 @@ CREATE TABLE things_to_do
     details TEXT,
     date_time TEXT,
     location TEXT,
-    approved BOOLEAN DEFAULT FALSE
-
+    approved BOOLEAN DEFAULT FALSE,
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
+
 CREATE TABLE businesses
 (   
     id SERIAL PRIMARY KEY, 
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
-    date_time TEXT,
     location TEXT,
     ownership text[],
-    approved BOOLEAN DEFAULT FALSE
+    approved BOOLEAN DEFAULT FALSE,
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE experiences
@@ -40,7 +41,8 @@ CREATE TABLE experiences
     details TEXT,
     tags text[],
     overall_experience TEXT,
-    approved BOOLEAN DEFAULT FALSE
+    approved BOOLEAN DEFAULT FALSE,
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
 
 
@@ -259,8 +261,8 @@ INSERT INTO things_to_do (country_id, name, details, date_time,location, approve
     (30, 'More poop content', 'crazy shit', '5th sept', 'The beach', FALSE);
 
 
-INSERT INTO businesses (country_id, name, details, date_time, location, ownership, approved) VALUES
-    (150, 'Tarek''s Tacos', 'Fantastic service at a great price.', '15 October 2020', 'Downtown', '{"black"}', TRUE);
+INSERT INTO businesses (country_id, name, details, location, ownership, approved) VALUES
+    (150, 'Tarek''s Tacos', 'Fantastic service at a great price.','Downtown', '{"black"}', TRUE);
 
 
 
