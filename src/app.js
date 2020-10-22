@@ -11,9 +11,10 @@ const {
 	approvePostHandler,
 	getCountryLawsHandler,
 	displayAllCountries,
+	setCookie,
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
-const { checkBasicAuth, setCookie } = require("./middleware/auth");
+const { checkBasicAuth } = require("./middleware/auth");
 const cookieParser = require("cookie-parser");
 
 const app = express();
