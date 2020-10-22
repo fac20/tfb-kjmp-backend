@@ -4,10 +4,17 @@ function getApprovedPost(countryID, table) {
 	return db
 		.query(
 			`SELECT * FROM countries, ($1)
-        WHERE ($2).country_id = ($3)
-        AND countries.id = ($4)
-        AND ($5).approved = TRUE`,
-			[table, table, countryID, countryID, table],
+        WHERE ($2) = ($3)
+        AND ($4) = ($5)
+        AND ($6)= TRUE`,
+			[
+				table,
+				table.country_id,
+				countryID,
+				countries.id,
+				countryID,
+				table.approved,
+			],
 		)
 		.then(result => result.rows)
 		.catch(error => error);
