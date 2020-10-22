@@ -17,18 +17,19 @@ CREATE TABLE things_to_do
     details TEXT,
     date_time TEXT,
     location TEXT,
-    approved BOOL
-
+    approved BOOL,
+    created_at NOT NULL DEFAULT NOW()
 );
+
 CREATE TABLE businesses
 (   id SERIAL INTEGER, 
     country_id INTEGER REFERENCES countries(id),
     name VARCHAR(255) NOT NULL,
     details TEXT,
-    date_time TEXT,
     location TEXT,
     ownership text[],
-    approved BOOL
+    approved BOOL,
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE experiences
@@ -38,7 +39,8 @@ CREATE TABLE experiences
     details TEXT,
     tags text[],
     overall_experience TEXT,
-    approved BOOL
+    approved BOOL,
+    created_at timestamp NOT NULL DEFAULT NOW()
 );
 
         INSERT INTO countries
