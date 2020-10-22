@@ -41,6 +41,12 @@ jobs:
           paths:
             - ~/project/node_modules
       - run:
+          name: install dockerize
+          command: npm i dockerize
+      - run: 
+          name:
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
           name: run tests
           command: npm run test
       - run:
