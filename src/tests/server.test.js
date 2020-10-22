@@ -24,6 +24,7 @@ test("check status code is 200", t => {
 test("that the troll test entry is returned on admin query", t => {
 	supertest(app)
 		.get("/admin/experiences")
+		.set("cookie", ["username=admin;password=password"])
 		.expect(200)
 		.expect("content-type", "application/json; charset=utf-8")
 		.end((err, res) => {
