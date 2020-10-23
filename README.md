@@ -19,16 +19,23 @@ Allows users to input user data from a postgres database using an RESTful API bu
 - [Tech Stack](#Tech-Stack)
 - [🗄️ Database schema](#🗄️-Database-schema)
 - [🧞‍Features](#🧞‍-Features)
-- [Install](#Install)
+- [🔧 Install](#🔧-Install)
 	- [Database setup](#Database-setup)
 	- [REST API Endpoints](#REST-API-Endpoints)
 - [🕐Project Timeline](#🕐-Project-Timeline)
+	- [Week 1 - Design](#🎨 Week-1:-Design)
+	- [Week 2 - First Build Sprint](#🔧 Week-2:-First-Build-Sprint)
 <!-- - [Reflections and What Next](#Reflections-and-what-next)
 - [Key takeaways](#Key-takeaways)
 - [ Additional Features](#Additional-Features) --> 
 
 ## Tech Stack
 
+- PostgreSQL 
+- Express
+- Airtable
+- CircleCI
+- CodeCov 
 
 #### Dependencies
 
@@ -51,14 +58,14 @@ Allows users to input user data from a postgres database using an RESTful API bu
 
 <!---![]()-->
 
-## Features
+## 🧞‍Features
 
 - Users can see approved posts of other people's experiences, things to do, businesses and laws in each country 
 - Users can post their own experiences, things to do and business listings for each country
 - An admin can view unapproved posts and approve them for viewing by users 
 
 
-## Install
+## 🔧 Install
 1. Clone this repo locally
 2. Run `npm run i` to install dependencies 
 
@@ -74,11 +81,16 @@ CREATE USER myuser WITH PASSWORD 'mypassword';
 
 ```
    CREATE DATABASE my_new_db WITH OWNER myuser;
-   \connect my_new_db;
+   \connect database_name;
    \include .../database/init.sql;
 
 ```
+5. Add the local database info to a .env in the root of the project
 
+```
+TEST_DATABASE_URL = "postgres://myuser:mypassword@localhost:5432/database_name"
+
+``` 
 
 ---
 
@@ -110,7 +122,7 @@ CREATE USER myuser WITH PASSWORD 'mypassword';
 
 ---
 
-## 📆 Project Timeline
+## 🕐 Project Timeline
 ### 🎨 Week 1: Design 
 
 
