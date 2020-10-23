@@ -31,10 +31,11 @@ Allows users to input user data from a postgres database using an RESTful API bu
 
 
 #### Dependencies
-- pg - non-blocking postgres client for Node (API)
+
+- cors - provides a Connect/Express middleware that can be used to enable CORS with various options
 - dotenv - allows private variables to be added (API)
 - nodemon - restarts the server automatically when you make any change to the code
-- cors - provides a Connect/Express middleware that can be used to enable CORS with various options
+- pg - non-blocking postgres client for Node (API)
 - Prettier - ensures we all have same formatting as a team
 - Supertest - a library made specifically for testing nodejs http servers
 - Tape - an assertion library used in setting up testing structure 
