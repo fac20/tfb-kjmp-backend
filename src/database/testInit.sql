@@ -40,7 +40,7 @@ CREATE TABLE experiences
     details TEXT,
     tags text[],
     overall_experience TEXT,
-    approved BOOL DEFULT FALSE,
+    approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
 
