@@ -23,8 +23,8 @@ Allows users to input user data from a postgres database using an RESTful API bu
 	- [Database setup](#Database-setup)
 	- [REST API Endpoints](#REST-API-Endpoints)
 - [🕐Project Timeline](#🕐-Project-Timeline)
-	- [Week 1 - Design](#🎨 Week-1:-Design)
-	- [Week 2 - First Build Sprint](#🔧 Week-2:-First-Build-Sprint)
+	- [Week 1 - Design](#🎨-Week-1:-Design)
+	- [Week 2 - First Build Sprint](#🔧-Week-2:-First-Build-Sprint)
 <!-- - [Reflections and What Next](#Reflections-and-what-next)
 - [Key takeaways](#Key-takeaways)
 - [ Additional Features](#Additional-Features) --> 
