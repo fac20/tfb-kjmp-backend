@@ -124,7 +124,7 @@ TEST_DATABASE_URL = "postgres://myuser:mypassword@localhost:5432/database_name"
 
 ## 🕐 Project Timeline
 
-### 🎨 Week 1 Design 
+### 🎨 Week 1 Design
 
 
 Here's an overview of our user stories - 
