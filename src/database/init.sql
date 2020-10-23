@@ -174,7 +174,7 @@ CREATE TABLE experiences
             ('Niger','Africa'),
             ('Nigeria','Africa'),
             ('North Korea','Asia'),
-            ('North Macedonia'),
+            ('North Macedonia', 'Europe'),
             ('Norway','Europe'),
             ('Oman','Asia'),
             ('Pakistan','Asia'),
