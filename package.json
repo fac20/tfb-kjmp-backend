@@ -4,9 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "NODE_ENV=test tape 'src/tests/*' | tap-spec",
+		"test": "NODE_ENV=test nyc tape 'src/tests/*' | tap-spec",
 		"dev": "nodemon src/server.js",
-		"start": "nodemon src/server.js"
+		"start": "node src/server.js",
+		"cov": "npm test -- --coverage --watchAll=false",
+		"report-test": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t 064e11d9-e351-4e4f-899d-f13af28649fb"
 	},
 	"repository": {
 		"type": "git",
@@ -19,19 +21,12 @@
 	},
 	"homepage": "https://github.com/fac20/tfb-kjmp-backend#readme",
 	"dependencies": {
+		"airtable": "^0.10.0",
+		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
-		"eslint-config-prettier": "^6.13.0",
 		"express": "^4.17.1",
-		"husky": "^4.3.0",
-		"lint-staged": "^10.4.2",
-		"nock": "^13.0.4",
-		"nodemon": "^2.0.5",
-		"pg": "^8.4.1",
-		"prettier": "^2.1.2",
-		"supertest": "^5.0.0",
-		"tap-spec": "^5.0.0",
-		"tape": "^5.0.1"
+		"pg": "^8.4.1"
 	},
 	"husky": {
 		"hooks": {
@@ -44,7 +39,16 @@
 		]
 	},
 	"devDependencies": {
-		"airtable": "^0.10.0",
-		"cookie-parser": "^1.4.5"
+		"codecov": "^3.8.0",
+		"eslint-config-prettier": "^6.13.0",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.2",
+		"nock": "^13.0.4",
+		"nodemon": "^2.0.5",
+		"nyc": "^15.1.0",
+		"prettier": "^2.1.2",
+		"supertest": "^5.0.0",
+		"tap-spec": "^5.0.0",
+		"tape": "^5.0.1"
 	}
 }
