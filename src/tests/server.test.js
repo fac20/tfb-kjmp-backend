@@ -22,20 +22,6 @@ test("check status code is 200", t => {
 		});
 });
 
-test("that the troll test entry is returned on admin query", t => {
-	supertest(app)
-		.get("/admin/experiences")
-		.set("cookie", ["username=admin;password=password"])
-		.expect(200)
-		.expect("content-type", "application/json; charset=utf-8")
-		.end((err, res) => {
-			t.equal(res.body[0].id, 2);
-			t.equal(res.body[0].details, "Troll review");
-			t.error(err);
-			t.end();
-		});
-});
-
 test("check if approved content is returned", t => {
 	supertest(app)
 		.get("/countries/7/things_to_do")
@@ -103,6 +89,40 @@ test("user can add own thing to do", t => {
 		.expect("content-type", "application/json; charset=utf-8")
 		.end((err, res) => {
 			t.equal(res.body[0].date_time, "anytime!");
+			t.error(err);
+			t.end();
+		});
+});
+
+// Admin routes
+
+test("that the troll test entry is returned on admin query", t => {
+	supertest(app)
+		.get("/admin/experiences")
+		.set("cookie", ["username=admin;password=password"])
+		.expect(200)
+		.expect("content-type", "application/json; charset=utf-8")
+		.end((err, res) => {
+			t.equal(res.body[0].id, 2, "returned object should have ID of 2");
+			t.equal(
+				res.body[0].details,
+				"Troll review",
+				"Should have details value of 'Troll review'",
+			);
+			t.error(err);
+			t.end();
+		});
+});
+
+test("approved value changes to TRUE", t => {
+	supertest(app)
+		.put("/admin/things_to_do/3")
+		.set("cookie", ["username=admin;password=password"])
+		.expect(200)
+		.expect("content-type", "application/json; charset=utf-8")
+		.end((err, res) => {
+			t.equal(res.body.id, 3, "returned object should have ID of 3");
+			t.equal(res.body.approved, true), "Should have approved value of true";
 			t.error(err);
 			t.end();
 		});
