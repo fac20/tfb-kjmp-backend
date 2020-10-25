@@ -88,3 +88,22 @@ test("user can add own experience", t => {
 			t.end();
 		});
 });
+
+test("user can add own thing to do", t => {
+	supertest(app)
+		.post("/countries/97/things_to_do")
+		.send({
+			country_id: 97,
+			name: "Climb Mt Vesuvius",
+			details: "It is really beautiful looking over the country",
+			date_time: "anytime!",
+			location: "Near Naples",
+		})
+		.expect(200)
+		.expect("content-type", "application/json; charset=utf-8")
+		.end((err, res) => {
+			t.equal(res.body[0].date_time, "anytime!");
+			t.error(err);
+			t.end();
+		});
+});
