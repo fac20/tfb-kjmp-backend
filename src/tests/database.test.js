@@ -78,6 +78,8 @@ test("get request for country-specific approved businesses", async t => {
 	}
 });
 
+// User add tests
+
 test("user can add an experience", async t => {
 	try {
 		await build();
@@ -98,6 +100,26 @@ test("user can add an experience", async t => {
 		);
 	} catch (error) {
 		t.error(error);
+	} finally {
+		t.end();
+	}
+});
+
+test("user can add own business", async t => {
+	try {
+		await build();
+		const business = {
+			country_id: 90,
+			name: "Sareet's Sushi",
+			details: "Great sashimi!",
+			location: "The desert",
+			tags: ["black", "disabled"],
+		};
+		await addBusiness(business);
+		const entries = await getUnapproved("businesses");
+		t.equal(entries.length, 1, "should now be 1 unapproved business");
+	} catch (err) {
+		t.error(err);
 	} finally {
 		t.end();
 	}
