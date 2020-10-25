@@ -76,8 +76,8 @@ function approvePostHandler(req, res, next) {
 	const id = req.params.postId;
 	const table = req.params.table;
 	updateApproval(table, id)
-		.then(() => {
-			return res.status(204).send();
+		.then(result => {
+			return res.status(200).send(result);
 		})
 		.catch(next);
 }

@@ -28,7 +28,7 @@ CREATE TABLE businesses
     name VARCHAR(255) NOT NULL,
     details TEXT,
     location TEXT,
-    ownership text[],
+    tags text[],
     approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
@@ -90,7 +90,7 @@ CREATE TABLE experiences
             ('Croatia','Europe'),
             ('Cuba','The Caribbean'),
             ('Cyprus','Asia'),
-            ('Czechia','Europe'),
+            ('Czech Republic','Europe'),
             ('Democratic Republic of Congo','Africa'),
             ('Denmark','Europe'),
             ('Djibouti','Africa'),
@@ -260,7 +260,7 @@ INSERT INTO things_to_do (country_id, name, details, date_time,location, approve
     (30, 'More poop content', 'crazy shit', '5th sept', 'The beach', FALSE);
 
 
-INSERT INTO businesses (country_id, name, details, location, ownership, approved) VALUES
+INSERT INTO businesses (country_id, name, details, location, tags, approved) VALUES
     (150, 'Tarek''s Tacos', 'Fantastic service at a great price.','Downtown', '{"black"}', TRUE);
 
 
