@@ -90,7 +90,7 @@ CREATE TABLE experiences
             ('Croatia','Europe'),
             ('Cuba','The Caribbean'),
             ('Cyprus','Asia'),
-            ('Czechia','Europe'),
+            ('Czech Republic','Europe'),
             ('Democratic Republic of Congo','Africa'),
             ('Denmark','Europe'),
             ('Djibouti','Africa'),
