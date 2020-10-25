@@ -1,5 +1,8 @@
 const db = require("../database/connection.js");
 
+// To do:
+// Get table columns and object properties in model functions aligned. eg. Ownership column? date_time property?
+
 function getApprovedPost(countryID, table) {
 	return db
 		.query(
@@ -14,14 +17,8 @@ function getApprovedPost(countryID, table) {
 
 function addBusiness(business) {
 	return db.query(
-		`INSERT INTO businesses (country_id,name,details,date_time,location,) VALUES ($1,$2,$3,$4,$5) RETURNING *;`,
-		[
-			business.country_id,
-			business.name,
-			business.details,
-			business.date_time,
-			business.location,
-		],
+		`INSERT INTO businesses (country_id,name,details,location,) VALUES ($1,$2,$3,$4) RETURNING *;`,
+		[business.country_id, business.name, business.details, business.location],
 	);
 }
 
