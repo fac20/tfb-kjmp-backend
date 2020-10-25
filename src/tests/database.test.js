@@ -1,8 +1,5 @@
 const test = require("tape");
 const build = require("../database/build");
-const { end } = require("../database/connection");
-const db = require("../database/connection");
-const { getUnapprovedPostsHandler } = require("../handlers/tableHandlers");
 const {
 	getApprovedPost,
 	addBusiness,
@@ -11,6 +8,7 @@ const {
 	deletePost,
 	getUnapproved,
 	getAllCountries,
+	addThingsToDo,
 } = require("../model/postgresModels");
 
 // test that root API route works
@@ -118,6 +116,36 @@ test("user can add own business", async t => {
 		await addBusiness(business);
 		const entries = await getUnapproved("businesses");
 		t.equal(entries.length, 1, "should now be 1 unapproved business");
+		t.equal(
+			entries[0].country_id,
+			90,
+			"new entry should have country id of 90",
+		);
+	} catch (err) {
+		t.error(err);
+	} finally {
+		t.end();
+	}
+});
+
+test("user can add own thing to do", async t => {
+	try {
+		await build();
+		const item = {
+			country_id: 172,
+			name: "Big Drag Show",
+			details: "So fabulous",
+			date_time: "15th November 2020",
+			location: "Bar in town",
+		};
+		await addThingsToDo(item);
+		const entries = await getUnapproved("things_to_do");
+		t.equal(entries.length, 3, "should now be 3 unapproved things to do");
+		t.equal(
+			entries[2].country_id,
+			172,
+			"new entry should have country_id of 172",
+		);
 	} catch (err) {
 		t.error(err);
 	} finally {
@@ -145,6 +173,24 @@ test("can edit approved value from FALSE to TRUE", async t => {
 		await build();
 		const result = await updateApproval("experiences", 2);
 		t.equal(result.approved, true, "should return true");
+	} catch (err) {
+		t.error(err);
+	} finally {
+		t.end();
+	}
+});
+
+test("can delete posts from admin endpoint", async t => {
+	try {
+		await build();
+		await deletePost("things_to_do", 3);
+		const results = await getUnapproved("things_to_do");
+		t.equal(results.length, 1, "should now only be 1 result");
+		t.equal(
+			results[0].country_id,
+			30,
+			"first result should now have country_id of 30",
+		);
 	} catch (err) {
 		t.error(err);
 	} finally {
