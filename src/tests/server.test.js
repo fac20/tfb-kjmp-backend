@@ -49,6 +49,8 @@ test("check if approved content is returned", t => {
 		});
 });
 
+// POST endpoints
+
 test("user can add own business", t => {
 	supertest(app)
 		.post("/countries/51/businesses")
@@ -63,7 +65,26 @@ test("user can add own business", t => {
 		.expect("content-type", "application/json; charset=utf-8")
 		.end((err, res) => {
 			t.equal(res.body[0].details, "Big meat");
-			e.error(err);
+			t.error(err);
+			t.end();
+		});
+});
+
+test("user can add own experience", t => {
+	supertest(app)
+		.post("/countries/23/experiences")
+		.send({
+			country_id: 77,
+			socials: "@travellerBlog",
+			details: "Really good and fun country",
+			tags: ["black", "disabled"],
+			overall_experience: "Good",
+		})
+		.expect(200)
+		.expect("content-type", "application/json; charset=utf-8")
+		.end((err, res) => {
+			t.equal(res.body[0].socials, "@travellerBlog");
+			t.error(err);
 			t.end();
 		});
 });
