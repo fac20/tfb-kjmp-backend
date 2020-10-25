@@ -127,3 +127,14 @@ test("approved value changes to TRUE", t => {
 			t.end();
 		});
 });
+
+test("should get a 204 response from delete", t => {
+	supertest(app)
+		.delete("/admin/things_to_do/4")
+		.set("cookie", ["username=admin;password=password"])
+		.expect(204)
+		.end((err, res) => {
+			t.error(err);
+			t.end();
+		});
+});
