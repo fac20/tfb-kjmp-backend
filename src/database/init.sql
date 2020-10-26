@@ -18,7 +18,7 @@ CREATE TABLE things_to_do
     details TEXT,
     date_time TEXT,
     location TEXT,
-    approved BOOL,
+    approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
 
@@ -28,8 +28,8 @@ CREATE TABLE businesses
     name VARCHAR(255) NOT NULL,
     details TEXT,
     location TEXT,
-    ownership text[],
-    approved BOOL,
+    tags text[],
+    approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE experiences
     details TEXT,
     tags text[],
     overall_experience TEXT,
-    approved BOOL,
+    approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
 
