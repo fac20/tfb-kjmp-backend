@@ -39,7 +39,7 @@ CREATE TABLE experiences
     socials TEXT,
     details TEXT,
     tags text[],
-    overall_experience TEXT,
+    overall_experience INTEGER,
     approved BOOL DEFAULT FALSE,
     created_at timestamp NOT NULL DEFAULT NOW()
 );
@@ -249,8 +249,8 @@ CREATE TABLE experiences
 COMMIT;
 
 INSERT INTO experiences (country_id, socials, details, tags, overall_experience, approved) VALUES
-    (7, 'social stuff idk', 'Food was amazing!', '{"black", "queer"}', 'Good', TRUE),
-    (52, 'instagram.com/yolo', 'Troll review', '{"black", "trans"}', 'Bad', FALSE);
+    (7, 'social stuff idk', 'Food was amazing!', '{"black", "queer"}', 5, TRUE),
+    (52, 'instagram.com/yolo', 'Troll review', '{"black", "trans"}', 2, FALSE);
 
 
 INSERT INTO things_to_do (country_id, name, details, date_time,location, approved) VALUES
