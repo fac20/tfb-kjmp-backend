@@ -11,7 +11,7 @@ const {
 	approvePostHandler,
 	getCountryLawsHandler,
 	displayAllCountries,
-	setCookie,
+	adminLogin,
 } = require("./handlers/tableHandlers");
 const handleErrors = require("./middleware/error");
 const { checkBasicAuth } = require("./middleware/auth");
@@ -36,7 +36,7 @@ app.post("/countries/:id/businesses", addBusinessHandler);
 app.post("/countries/:id/things_to_do", addThingsToDoHandler);
 
 ////// ADMIN ROUTES FOR PAULA //////
-app.post("/admin", setCookie);
+app.post("/admin", adminLogin);
 app.put("/admin/:table/:postId", checkBasicAuth, approvePostHandler);
 app.delete("/admin/:table/:postId", checkBasicAuth, deletePostHandler);
 app.get("/admin/:table", checkBasicAuth, getUnapprovedPostsHandler);

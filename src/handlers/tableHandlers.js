@@ -1,3 +1,5 @@
+const dotenv = require("dotenv").config();
+
 const {
 	getAllCountries,
 	getApprovedPost,
@@ -92,13 +94,11 @@ function deletePostHandler(req, res, next) {
 		.catch(next);
 }
 
-function setCookie(req, res, next) {
+function adminLogin(req, res, next) {
 	const { username, password } = req.body;
 	if (username === "admin" && password === "password") {
-		res
-			.cookie("username", req.body.username)
-			.cookie("password", req.body.password);
-		res.status(200).send("loggedin");
+		const token = jwt.sign({ user: username }, process.env.SECRET);
+		res.status(200).send({ token });
 	} else res.send("wrong credentials");
 }
 
@@ -113,5 +113,5 @@ module.exports = {
 	approvePostHandler,
 	getCountryLawsHandler,
 	displayAllCountries,
-	setCookie,
+	adminLogin,
 };
