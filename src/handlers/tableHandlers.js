@@ -96,8 +96,8 @@ function setCookie(req, res, next) {
 	const { username, password } = req.body;
 	if (username === "admin" && password === "password") {
 		res
-			.cookie("username", req.body.username)
-			.cookie("password", req.body.password);
+			.cookie("username", req.body.username,  { httpOnly: false, secure: false })
+			.cookie("password", req.body.password,  { httpOnly: false, secure: false });
 		res.status(200).send("loggedin");
 	} else res.send("wrong credentials");
 }
