@@ -22,9 +22,11 @@ app.use(handleErrors);
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.options('/*', cors());
 app.use(cookieParser());
+
+
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
