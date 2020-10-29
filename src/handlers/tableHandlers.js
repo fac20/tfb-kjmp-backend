@@ -1,4 +1,5 @@
 const dotenv = require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const {
 	getAllCountries,
