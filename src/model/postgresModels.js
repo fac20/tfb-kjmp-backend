@@ -61,7 +61,9 @@ function addExperiences(experience) {
 
 function getUnapproved(table) {
 	return db
-		.query(`SELECT * FROM ${table} WHERE approved = FALSE;`)
+		.query(
+			`SELECT * FROM countries, ${table} WHERE ${table}.approved = FALSE AND countries.id = ${table}.country_id;`,
+		)
 		.then(result => result.rows)
 		.catch(error => error);
 }
