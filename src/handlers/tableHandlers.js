@@ -97,7 +97,7 @@ function deletePostHandler(req, res, next) {
 
 function adminLogin(req, res, next) {
 	const { username, password } = req.body;
-	if (username === "admin" && password === "password") {
+	if (username === "admin" && password === process.env.ADMIN_PASSWORD) {
 		const token = jwt.sign({ user: username }, process.env.SECRET);
 		res.status(200).send({ token });
 	} else res.send("wrong credentials");
