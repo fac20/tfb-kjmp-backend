@@ -1,7 +1,6 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-var history = require("connect-history-api-fallback");
 const cookieParser = require("cookie-parser");
 
 const {
@@ -21,7 +20,7 @@ const { checkBasicAuth } = require("./middleware/auth");
 
 const app = express();
 app.use(handleErrors);
-app.use(history());
+
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 app.options('/*', cors());
