@@ -9,6 +9,9 @@ if (process.env.NODE_ENV === "test") {
 
 const db = new pg.Pool({
 	connectionString,
+	ssl: {
+		rejectUnauthorized: false,
+	},
 });
 
 module.exports = db;
